@@ -8,6 +8,7 @@
 </head>
 <body>
     <table border="1" cellpadding="10" cellspacing="0">
+        <!-- gini -->
         <!-- <?php 
             for ( $i = 1; $i <= 3; $i++) {
                 echo "<tr>";
@@ -18,13 +19,34 @@
             }
         ?> -->
 
-        <?php for ( $i = 1; $i <= 3; $i++ ) { ?>
+        <!-- jadi gini -->
+        <!-- <?php for ( $i = 1; $i <= 3; $i++ ) { ?>
             <tr>
                 <?php for( $j = 1; $j <= 5; $j++ ) { ?>
                     <td><?php echo "$i, $j"; ?></td>
                 <?php } ?>
             </tr>
-        <?php } ?>
+        <?php } ?> -->
+
+        <!-- akhire gini -->
+        <!-- <?php for ( $i = 1; $i <= 3; $i++ ) : ?>
+            <tr>
+                <?php for( $j = 1; $j <= 5; $j++ ) : ?>
+                    <td><?php echo "$i, $j"; ?></td>
+                <?php endfor; ?>
+            </tr>
+        <?php endfor; ?> -->
+
+        <!-- https://www.youtube.com/watch?v=9gpAJPWD-xI&list=PLFIM0718LjIUqXfmEIBE3-uzERZPh3vp6&index=5&ab_channel=WebProgrammingUNPAS -->
+        <!-- akhire gini 23:25 -->
+        <!-- <?php for ( $i = 1; $i <= 3; $i++ ) : ?>
+            <tr>
+                <?php for( $j = 1; $j <= 5; $j++ ) : ?>
+                    <td><?= "$i, $j"; ?></td>
+                <?php endfor; ?>
+            </tr>
+        <?php endfor; ?> -->
+
     </table>
 </body>
 </html>
