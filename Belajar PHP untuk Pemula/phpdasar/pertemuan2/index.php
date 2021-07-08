@@ -20,8 +20,8 @@
 //var_dump(1 > 5);
 // var_dump (1 == "1");
 
-$x = 10;
-var_dump($x < )
+$x = 11;
+var_dump($x <= 11 || $x % 2 == 0);
 
 ?>
 
