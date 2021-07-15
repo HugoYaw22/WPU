@@ -12,11 +12,10 @@
     // tombol cari ditekan
     if ( isset($_POST["cari"]) ) {
         $mahasiswa = cari($_POST["keyword"]);
+        $_POST["keyword"] = "keyword";
     } else {
         $mahasiswa = cari("");
     }
-
-    var_dump($_GET["keyword"]);
 
     // pagination
     $jumlahDataPerHalaman = 3;
@@ -31,19 +30,18 @@
         $halamanAktif = ( $halamanAktif > $jumlahHalaman ) ? $jumlahHalaman : $halamanAktif;
         
         $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
-    
-        //$mahasiswa = query("SELECT * FROM mahasiswa LIMIT $awalData, $jumlahDataPerHalaman");
+
+        $mahasiswa = query("SELECT * FROM mahasiswa LIMIT $awalData, $jumlahDataPerHalaman");
     } else {
         $jumlahHalaman = 1;    
         $halamanAktif = 1;
         $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
-    
-        //$mahasiswa = query("SELECT * FROM mahasiswa LIMIT $awalData, $jumlahDataPerHalaman");
+
+        $mahasiswa = query("SELECT * FROM mahasiswa LIMIT $awalData, $jumlahDataPerHalaman");
     }
 
     // tombol logout ditekan
     if ( isset($_POST["logout"]) ) {
-        session_destroy();
         header("Location: login.php");
         exit;
     }
@@ -65,11 +63,12 @@
     <a href="tambah.php">Tambah data mahasiswa</a>
 
     <br><br>
-
+    
     <form action="" method="post">      
-        <input type="text" name="keyword" size="40" autofocus placeholder="masukan keyword pencarian..." autocomplete="off" value="">
+        <input type="text" name="keyword" size="40" autofocus placeholder="masukan keyword pencarian..." autocomplete="off">
         <button type="submit" name="cari">Cari !</button>
     </form>
+    
 
     <br>
 
@@ -83,7 +82,7 @@
         <?php if( $i == $halamanAktif ) : ?>
         <a href="?halaman=<?= $i; ?>" style="font-weight: bold; color: red;"><?= $i; ?></a>
         <?php else : ?>
-            <a type="submit" name="cari" href="?halaman=<?= $i; ?>&keyword=anu"><?= $i; ?></a>
+            <a type="submit" name="cari" href="?halaman=<?= $i; ?>"><?= $i; ?></a>
         <?php endif; ?>
     <?php endfor; ?>
 
