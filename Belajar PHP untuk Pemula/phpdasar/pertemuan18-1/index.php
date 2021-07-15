@@ -16,7 +16,7 @@
         $mahasiswa = cari("");
     }
 
-    var_dump($_POST);
+    var_dump($_GET["keyword"]);
 
     // pagination
     $jumlahDataPerHalaman = 3;
@@ -67,10 +67,7 @@
     <br><br>
 
     <form action="" method="post">      
-        <?php 
-            $xkeyword = ( isset($_POST["cari"]) ) ? $_POST["keyword"] : "";
-        ?>
-        <input type="text" name="keyword" size="40" autofocus placeholder="masukan keyword pencarian..." autocomplete="off" value="<?= $xkeyword; ?>">
+        <input type="text" name="keyword" size="40" autofocus placeholder="masukan keyword pencarian..." autocomplete="off" value="">
         <button type="submit" name="cari">Cari !</button>
     </form>
 
@@ -78,23 +75,21 @@
 
     <!-- navigasi -->
 
-    <form action="" method="post">
-        <?php if( $halamanAktif > 1) : ?>
-            <a href="?halaman=<?= $halamanAktif - 1; ?>">&laquo;</a>
-        <?php endif; ?>
+    <?php if( $halamanAktif > 1) : ?>
+        <a href="?halaman=<?= $halamanAktif - 1; ?>">&laquo;</a>
+    <?php endif; ?>
 
-        <?php for( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
-            <?php if( $i == $halamanAktif ) : ?>
-            <a href="?halaman=<?= $i; ?>" style="font-weight: bold; color: red;"><?= $i; ?></a>
-            <?php else : ?>
-                <a type="submit" name="cari" href="?halaman=<?= $i; ?>"><?= $i; ?></a>
-            <?php endif; ?>
-        <?php endfor; ?>
-
-        <?php if( $halamanAktif < $jumlahHalaman) : ?>
-            <a href="?halaman=<?= $halamanAktif + 1; ?>">&raquo;</a>
+    <?php for( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
+        <?php if( $i == $halamanAktif ) : ?>
+        <a href="?halaman=<?= $i; ?>" style="font-weight: bold; color: red;"><?= $i; ?></a>
+        <?php else : ?>
+            <a type="submit" name="cari" href="?halaman=<?= $i; ?>&keyword=anu"><?= $i; ?></a>
         <?php endif; ?>
-    </form>
+    <?php endfor; ?>
+
+    <?php if( $halamanAktif < $jumlahHalaman) : ?>
+        <a href="?halaman=<?= $halamanAktif + 1; ?>">&raquo;</a>
+    <?php endif; ?>
 
     <br>
 
