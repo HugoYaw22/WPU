@@ -14,7 +14,7 @@ FROM product
 LEFT JOIN product_kelompok ON product_kelompok.RECNO = product.KELOMPOK_RECNO
 LEFT JOIN product_merk ON product_merk.RECNO = product.MERK_RECNO
 LEFT JOIN product_satuan ON product_satuan.RECNO = product.SATUAN_RECNO
-WHERE product.DRAFT = 0 AND product.AKTIF = 1
+WHERE product.DRAFT = 0 AND product.AKTIF = 2
 ORDER BY product_kelompok.NAMA ASC, product_merk.NAMA ASC, product.DESKRIPSI ASC, product_satuan.NAMA ASC
 ;
     ");
@@ -69,10 +69,10 @@ ORDER BY product_kelompok.NAMA ASC, product_merk.NAMA ASC, product.DESKRIPSI ASC
         <br>
 
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <div class="table-responsive">
+                        <div class="table-responsive-sm">
                             <table id="report-table" class="table mb-0">
                                 <thead class="thead-light">
                                     <tr>
