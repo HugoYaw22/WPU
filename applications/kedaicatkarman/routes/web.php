@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', ['title' => 'Home']);
+});
+
+Route::get('/point', function() {
+    return view('point', ['title' => 'Point']);
 });
