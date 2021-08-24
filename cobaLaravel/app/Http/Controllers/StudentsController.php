@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentsController extends Controller
 {
@@ -14,7 +15,8 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
+        //$students = Student::all();
+        $students = DB::select('select * from students');
         return view('students.index', compact('students'));
     }
 

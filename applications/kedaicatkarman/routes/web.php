@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PointController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,8 @@ Route::get('/', function () {
     return view('home', ['title' => 'Home']);
 });
 
-Route::get('/point', function() {
-    return view('point', ['title' => 'Point']);
-});
+Route::post('/point', [PointController::class, 'store']);
+Route::get('/point', [PointController::class, 'index']);
+// Route::get('/point', function() {
+//     return view('point', ['title' => 'Point']);
+// });
